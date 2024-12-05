@@ -28,15 +28,18 @@ if [[ "${BASH_SOURCE[0]}" != "${0}" ]]; then
    return
 fi
 
-set -e
-set -o xtrace
+set -xe
 
 CONDA_DIR=${CONDA_DIR:-~/miniconda3}
 source ${CONDA_DIR}/etc/profile.d/conda.sh
-for pyver in "38" "39" "310" "311";
+
+MIN_PYVER=${MIN_PYVER:-8}
+MAX_PYVER=${MAX_PYVER:-13}
+
+for v in $(seq ${MIN_PYVER} ${MAX_PYVER});
 do
-  conda activate py${pyver}
-  if [[ "$pyver" == "38" ]]; then
+  conda activate py3${v}
+  if [[ "${v}" == "8" ]]; then
     ./build_hip_python_pkgs.sh --pre-clean --post-clean --hip --cuda --run-tests -j ${NUM_JOBS:-16}
   else
     ./build_hip_python_pkgs.sh --pre-clean --post-clean --hip --cuda --run-tests -j ${NUM_JOBS:-16} --no-archive
