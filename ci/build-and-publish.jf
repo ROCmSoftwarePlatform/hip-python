@@ -43,7 +43,7 @@ pipeline {
                 '5.4.3',
             ],
             description: 'The ROCm version to target with the code generator.',
-            name: 'ROCM_VER'
+            name: 'ROCM_VERSION'
         )
         editableChoice(
             choices: [
@@ -51,14 +51,14 @@ pipeline {
                 'codegen',
                 'release',
             ],
-            description: 'The branch name will be constructed as `${BASE_BRANCH_PREFIX}/rocm-rel-${ROCM_VER}`. `develop` is first to make it default.',
+            description: 'The branch name will be constructed as `${BASE_BRANCH_PREFIX}/rocm-rel-${ROCM_VERSION}`. `develop` is first to make it default.',
             name: 'BASE_BRANCH_PREFIX'
         )
         editableChoice(
             choices: [
                 'release',
             ],
-            description: 'The branch name will be constructed as `${RELEASE_BRANCH_PREFIX}/rocm-rel-${ROCM_VER}`. `develop` is first to make it default.',
+            description: 'The branch name will be constructed as `${RELEASE_BRANCH_PREFIX}/rocm-rel-${ROCM_VERSION}`. `develop` is first to make it default.',
             name: 'RELEASE_BRANCH_PREFIX'
         )
         editableChoice(
@@ -110,7 +110,7 @@ pipeline {
                         set -e
                         set -o xtrace
                         git checkout ${CI_BRANCH} # create local version of $CI_BRANCH
-                        export BASE_BRANCH="${BASE_BRANCH_PREFIX}/rocm-rel-${ROCM_VER}"
+                        export BASE_BRANCH="${BASE_BRANCH_PREFIX}/rocm-rel-${ROCM_VERSION}"
                         git checkout ${BASE_BRANCH}
                         bash init.sh
                         '''
@@ -151,7 +151,7 @@ pipeline {
                     sh '''#!/usr/bin/env bash
                     set -e
                     set -o xtrace
-                    export RELEASE_BRANCH="${RELEASE_BRANCH_PREFIX}/rocm-rel-${ROCM_VER}"
+                    export RELEASE_BRANCH="${RELEASE_BRANCH_PREFIX}/rocm-rel-${ROCM_VERSION}"
                     # remove local and origin branch if they exist
                     git branch -d ${RELEASE_BRANCH} || true
                     git fetch origin
@@ -177,3 +177,4 @@ pipeline {
         }
     }
 }
+
