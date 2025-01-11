@@ -35,7 +35,8 @@ for HIP and an interoperability layer for CUDA&reg; Python programs
     * See the `git` branches tagged with `release/rocm-rel-X.Y[.Z]`
   * Prebuilt packages are built only for particular ROCm versions. 
 
-> **NOTE**: You may find that packages for one ROCm&trade; release might be compatible with the ROCm&trade; HIP SDK of another release as the HIP Python functions load HIP C functions in a lazy manner.
+> [!NOTE]
+> You may find that packages for one ROCm&trade; release might be compatible with the ROCm&trade; HIP SDK of another release as the HIP Python functions load HIP C functions in a lazy manner.
 
 ### Build requirements
 
@@ -54,9 +55,11 @@ for HIP and an interoperability layer for CUDA&reg; Python programs
 > **NOTE**: The prebuilt packages might not be available on PyPI directly after a ROCm release as this project is not an official part of the ROCm HIP SDK yet and thus is not fully integrated into the global ROCm HIP SDK build process. Check the `simple` lists to see if your operating system and Python version is supported: [hip-python](https://test.pypi.org/simple/hip-python/), [hip-python-as-cuda](https://test.pypi.org/simple/hip-python-as-cuda/).
 -->
 
-> **NOTE**: Prebuilt packages for some ROCm releases are published to Test PyPI first. Check the `simple` lists to see if your operating system and Python version is supported: [hip-python](https://test.pypi.org/simple/hip-python/), [hip-python-as-cuda](https://test.pypi.org/simple/hip-python-as-cuda/).
+> [!NOTE]
+> Prebuilt packages for some ROCm releases are published to Test PyPI first. Check the `simple` lists to see if your operating system and Python version is supported: [hip-python](https://test.pypi.org/simple/hip-python/), [hip-python-as-cuda](https://test.pypi.org/simple/hip-python-as-cuda/).
 
-> **WARNING**: Currently, we have not uploaded any HIP Python packages to PyPI yet. So far we have only uploaded packages to TestPyPI, mainly intended for internal testing purposes. If you find similar named packages on PyPI they may been provided by others, possibly with malicious intent.
+> [!CAUTION]
+> We have not uploaded any HIP Python packages to PyPI. So far we have only uploaded packages to TestPyPI, mainly intended for internal testing purposes. If you find similar named packages on PyPI they may been provided by others, possibly with malicious intent.
 
 ### Via TestPyPI
 
@@ -89,14 +92,15 @@ python3 -m pip install <path/to/hip_python>.whl
 # if you want to install the CUDA Python interoperability package too, run:
 python3 -m pip install <path/to/hip_python_as_cuda>.whl
 ```
-
-> **NOTE**: See the HIP Python user guide for more details:
+> [!NOTE]
+> See the HIP Python user guide for more details:
 > https://rocm.docs.amd.com/projects/hip-python/en/latest/index.html
 
 ## Build From Source
 
-> **NOTE**: The `main` branch is used for tracking updates to the docs, examples and CI scripts. 
-> The source code can be found on the release branches `relaese/rocm-rel-X.Y[.Z]`.
+> [!NOTE]
+> The `new_main` branch is used for tracking updates to the docs, examples and CI scripts. 
+> The source code can be found on the release branches `release/rocm-rel-X.Y[.Z]`.
 
 1. Install ROCM
 1. Install `pip`, virtual environment and development headers for Python 3:
@@ -118,7 +122,8 @@ The build process will produce Python binary wheels in the subdirectories
 `hip-python/dist/` and `hip-python-as-cuda/dist`, which can be installed
 as discussed in the previous section.
 
-> **NOTE**: See the HIP Python developer guide for more details:
+> [!NOTE]
+> See the HIP Python developer guide for more details:
 > https://rocm.docs.amd.com/projects/hip-python/en/latest/index.html
 
 ### Build Options
