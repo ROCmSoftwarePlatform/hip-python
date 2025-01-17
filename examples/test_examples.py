@@ -31,7 +31,8 @@ from hip import ROCM_VERSION_TUPLE
 from hip import hip as hiprt
 
 device_printf_works = ROCM_VERSION_TUPLE[0:2] != (5,5)
-    
+cu_mask_api_fixed_in_hip_python = ROCM_VERSION_TUPLE>=(6,3,1)
+
 props = hiprt.hipDeviceProp_t()
 hiprt.hipGetDeviceProperties(props, 0)
 gpugen = props.gcnArchName.decode("utf-8").split(":")[0]
@@ -61,6 +62,11 @@ if device_printf_works:
     python_examples += [
       "0_Basic_Usage/hiprtc_launch_kernel_args.py",
       "0_Basic_Usage/hiprtc_launch_kernel_no_args.py",
+    ]
+
+if cu_mask_api_fixed_in_hip_python:
+    python_examples += [
+      "0_Basic_Usage/hipblas_with_numpy_and_cu_mask.py",
     ]
 
 if have_hip_python_as_cuda:
